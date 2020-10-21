@@ -20,13 +20,9 @@ usage: SignDataTest.py [-h] [-e ENCODE] [-d DECODE] [-i INPUT] [-o OUTPUT] [-a A
 
 optional arguments: </br>
   -h, --help            show this help message and exit </br>
-  -e ENCODE, --encode ENCODE </br>
-                        encode data and output to a file </br>
-  -d DECODE, --decode DECODE</br>
-                        decode data from a file and output to a file</br>
-  -i INPUT, --input INPUT
-                        read encoded data from a file</br>
-  -o OUTPUT, --output OUTPUT</br>
-                        save encode/decode data to a file</br>
+  -e ENCODE, --encode ENCODE     encode data and output to a file </br>
+  -d DECODE, --decode DECODE     decode data from a file and output to a file</br>
+  -i INPUT,  --input INPUT       read encoded data from a file</br>
+  -o OUTPUT, --output OUTPUT     save encode/decode data to a file</br>
   -a ASN, --asn ASN     asn file pathname</br>
   -s XLS, --xls XLS     test data sheet file pathname</br>
