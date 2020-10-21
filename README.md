@@ -18,15 +18,15 @@
 5）帮助命令：./SignDataTest.py -h（or --help） </br>
 usage: SignDataTest.py [-h] [-e ENCODE] [-d DECODE] [-i INPUT] [-o OUTPUT] [-a ASN] [-s XLS]
 
-optional arguments:
-  -h, --help            show this help message and exit
-  -e ENCODE, --encode ENCODE
-                        encode data and output to a file
-  -d DECODE, --decode DECODE
-                        decode data from a file and output to a file
+optional arguments: </br>
+  -h, --help            show this help message and exit </br>
+  -e ENCODE, --encode ENCODE </br>
+                        encode data and output to a file </br>
+  -d DECODE, --decode DECODE</br>
+                        decode data from a file and output to a file</br>
   -i INPUT, --input INPUT
-                        read encoded data from a file
-  -o OUTPUT, --output OUTPUT
-                        save encode/decode data to a file
-  -a ASN, --asn ASN     asn file pathname
-  -s XLS, --xls XLS     test data sheet file pathname
+                        read encoded data from a file</br>
+  -o OUTPUT, --output OUTPUT</br>
+                        save encode/decode data to a file</br>
+  -a ASN, --asn ASN     asn file pathname</br>
+  -s XLS, --xls XLS     test data sheet file pathname</br>
