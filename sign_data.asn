@@ -12,8 +12,8 @@ SignDynamicBlock ::= SEQUENCE {
 } 
 
 GeneralHeader ::= SEQUENCE {
-	formatId               			 IA5String ("SPD"),
-	standardVersion              IA5String (SIZE (3)),
+	formatId               			 IA5String ("SPD") (SIZE (10)),
+	standardVersion              IA5String (SIZE (10)),
 	     -- " 10" (space-one-zero) for this version
 	lengthofRecord                INTEGER(0..4294967295),
 	numberofRepresentations       INTEGER(0..65535),

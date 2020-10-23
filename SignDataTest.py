@@ -168,6 +168,8 @@ def varNameDict(varNameDefine, sheet):
             testDataValue = channelScaling(varName, sheet)
         elif sheet.dataType[index] == 'DT': # captureDateTime
             testDataValue = captureDateTime(sheet)
+        elif sheet.dataType[index] == 'SS': # captureDateTime
+            testDataValue = checkSpecialSingle(index, varName, sheet)
 
         varNameDict.update({varName:testDataValue})
         
@@ -233,6 +235,18 @@ def checkSingle(index, varName, sheet):
                     assert testNum ==  int(numStr,16), 'index=%d：test data is %s , but must be %s' % (index+1,  testNum, numStr)
                 else:
                     assert testNum ==  numStr, 'index=%d：test data is %s , but must be %s' % (index+1,  testNum, numStr)
+        return testNum 
+    else:
+        assert False, 'index=%d：%s not correct！'%(index+1, sheet['varName'][index])
+
+def checkSpecialSingle(index, varName, sheet):
+    if sheet['varName'][index] == varName:
+        testNum = sheet['testData'][index]
+        if sheet['needCheck'][index] == 'Y':
+                numStr = sheet['dataRange'][index]    
+                                
+                assert testNum ==  numStr, 'index=%d：test data is %s , but must be %s' % (index+1,  testNum, numStr)
+
         return testNum 
     else:
         assert False, 'index=%d：%s not correct！'%(index+1, sheet['varName'][index])
