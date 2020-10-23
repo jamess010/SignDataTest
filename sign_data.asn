@@ -1,9 +1,9 @@
---SignDynamicFormatModule {iso standard 19794 signature/sign-sign-processed-dynamic(11) modules(0) version(0)}
-   SignDynamicFormatModule	DEFINITIONS ::= BEGIN
+   SignDynamicFormatModule	{iso standard 19794 sign-sign-processed-dynamic(11) modules(0) version(0)}
+   DEFINITIONS
 	 --PER INSTRUCTIONS
 	 --This specifies that PER Encoding Instructions are to be applied
-	 --AUTOMATIC TAGS ::= 
-   --BEGIN
+	 AUTOMATIC TAGS ::= 
+   BEGIN
  
 
 SignDynamicBlock ::= SEQUENCE {
@@ -36,7 +36,7 @@ RepresentationHeaderValues ::= SEQUENCE {
 	ychannelScaling              ScalingValue,
 	tchannelScaling              ScalingValue,
 	fchannelScaling              ScalingValue,
-	numberofDynamicEvents        INTEGER (1..MAX),
+	numberofDynamicEvents        INTEGER (1..4294967295),
 	numberofAveragingSamples     INTEGER (1..255)
 }
 
@@ -53,7 +53,7 @@ RepresentationHeaderValues ::= SEQUENCE {
 -- }
 
 
-CaptureDateTimeValues ::= OCTET STRING (SIZE (9))
+CaptureDateTimeValues ::= OCTET STRING (SIZE (18))
 
 -- The Octet String shall contain the 9 bytes specified in ISO/IEC 19794-1
 

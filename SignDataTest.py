@@ -12,6 +12,12 @@ encode:
 decode 
 ./SignDataTest.py -a /home/data/asn1tests/sign_data.asn -s /home/data/asn1tests/test_sheet.xlsx -d ber -i /home/data/asn1tests/testBer.txt -o /home/data/asn1tests/testBerResult.xls
 
+for per test
+encode:
+./SignDataTest.py -a /home/data/asn1tests/sign_data.asn -s /home/data/asn1tests/test_sheet.xlsx -e per -o /home/data/asn1tests/testPer.txt
+decode:
+./SignDataTest.py -a /home/data/asn1tests/sign_data.asn -s /home/data/asn1tests/test_sheet.xlsx -d per -i /home/data/asn1tests/testPer.txt -o /home/data/asn1tests/testPerResult.xls
+
 for xer test
 encode:
 ./SignDataTest.py -a /home/data/asn1tests/sign_data.asn -s /home/data/asn1tests/test_sheet.xlsx -e xer -o /home/data/asn1tests/testXer.txt
@@ -494,11 +500,7 @@ def main(argv):
         data_sheet.columns = ['index', 'testRef', 'abstract', 'varName', 'needCheck', 'dataType', 'dataRange', 'testData', 'testResult', 'remarks']
 
     if args.encode:
-        if args.encode == 'ber':
-#            print('codec is ber')
-            codec = args.encode
-        elif args.encode == 'xer':
-#            print('codec is xer')
+        if args.encode in ('ber','per','xer'):
             codec = args.encode
         else:
             print('not suport, default is ber')
@@ -523,12 +525,8 @@ def main(argv):
              print(encoded_data)
      
     elif args.decode:
-        if args.decode == 'ber':
- #           print('codec is ber')
+        if args.decode in ('ber','per','xer'):
             codec = args.decode
-        elif args.decode == 'xer':
- #           print('codec is xer!')
-            codec = args.decode 
         else:
             print('not suport, codec is ber or xer!')
             exit(0)
