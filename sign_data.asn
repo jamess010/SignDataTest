@@ -5,7 +5,6 @@
 	 AUTOMATIC TAGS ::= 
    BEGIN
  
-
 SignDynamicBlock ::= SEQUENCE {
 	header GeneralHeader,
 	body Body 
@@ -17,12 +16,13 @@ GeneralHeader ::= SEQUENCE {
 	     -- " 10" (space-one-zero) for this version
 	lengthofRecord                INTEGER(0..4294967295),
 	numberofRepresentations       INTEGER(0..65535),
-	certificationFlag             INTEGER(0..255)}
+	certificationFlag             INTEGER(0..255)
+}
 
 Body ::= SEQUENCE {
 	representation RepresentationHeaderValues,
-	-- RepresentationBodyValues}   changed by TJ 20201011
-	representationBody RepesentationBodyValues} -- changed end
+	representationBody RepesentationBodyValues
+} 
 
 RepresentationHeaderValues ::= SEQUENCE {
 	reprsentationLength          INTEGER(0..4294967295),
@@ -40,22 +40,7 @@ RepresentationHeaderValues ::= SEQUENCE {
 	numberofAveragingSamples     INTEGER (1..255)
 }
 
--- 19794-1 12.3.2 Common format for date and time
--- CaptureDateTimeValues ::= SEQUENCE {
--- 	year		INTEGER((1..65534) | (0xFFFF)),
--- 	month		INTEGER(1..12 | 0xFF),
--- 	date 		INTEGER(1..31),
--- 	time		INTEGER(0..23),
--- 	hour		INTEGER(0..59),
--- 	minute	INTEGER(0..59),
--- 	second	INTEGER(0..59),
--- 	millisecond	INTEGER(0..999)
--- }
-
-
 CaptureDateTimeValues ::= OCTET STRING (SIZE (18))
-
--- The Octet String shall contain the 9 bytes specified in ISO/IEC 19794-1
 
 QualityBlockValues ::= SEQUENCE {
    numberofQualityblocks INTEGER (0..255), 
@@ -67,59 +52,43 @@ QualityBlockValues ::= SEQUENCE {
 
 }
 
--- QualityBlockValues ::= SEQUENCE {
---	numberofQualityblocks INTEGER (0..255),   
---  qualityblock SEQUENCE {
---		SEQUENCE OF INTERGER
---		{
---			qualityScore INTEGER (0..100),
---			qualityalgorithmVendId INTEGER (1..65535),
---			qualityalgorithmId     INTEGER (1..65535)
---	}
-	
---	qualityblock Qualityblock
--- 		SEQUENCE {
---		qualityScore           INTEGER (0..100),
---		qualityalgorithmVendId INTEGER (1..65535),
---		qualityalgorithmId     INTEGER (1..65535)} 
--- }
-
--- Qualityblock ::= SEQUENCE {
--- 		qualityScore           INTEGER (0..100),
--- 		qualityalgorithmVendId INTEGER (1..65535),
--- 		qualityalgorithmId     INTEGER (1..65535)} 
-
 
 ScalingValue ::= SEQUENCE {
 	exponent               INTEGER (-16..15),
-	fraction               INTEGER (0..2047)}
+	fraction               INTEGER (0..2047)
+}
 
 RepesentationBodyValues ::= SEQUENCE {
 	dynamicEventData DynamicEventData,
 	featureData FeatureData,
-	extendedData OCTET STRING OPTIONAL}
+	extendedData OCTET STRING OPTIONAL
+}
 
 DynamicEventData ::= SEQUENCE {
 	xCoordinate           INTEGER (-32768..32767),
 	yCoordinate           INTEGER (-32768..32767),
 	fValue                INTEGER (0..65535),
 	timeValue             INTEGER (0..65535),
-	typeofEvent           INTEGER (0..255)}
+	typeofEvent           INTEGER (0..255)
+}
 	
 FeatureData ::= SEQUENCE {
 	totalTime       INTEGER (0..65535),
 	meanValues      OverallMeanValues,
 	sdValues        StandardDeviation,
-	cCoefficient    INTEGER (1..65535) }
+	cCoefficient    INTEGER (1..65535) 
+}
 
 OverallMeanValues ::= SEQUENCE {
 	meanX           INTEGER (-32768..32767),
 	meanY           INTEGER (-32768..32767),
-	meanF           INTEGER (0..65535) }
+	meanF           INTEGER (0..65535) 
+}
 
 StandardDeviation ::= SEQUENCE {
 	sdX             INTEGER (0..65535),
 	sdY             INTEGER (0..65535),
-	sdF             INTEGER (0..65535) }
+	sdF             INTEGER (0..65535) 
+}
 END
 
