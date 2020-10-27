@@ -377,6 +377,7 @@ def channelScalingToTestResult(varName, sheet,testResultBlock):
 def captureDateTimeToTestResult(varName, sheet, testResultBlock):
     rowcaptureDateTime = getVarRow(varName, sheet)
     captureDateTimeBlock = testResultBlock[varName]
+    captureDateTimeBlock = captureDateTimeBlock.hex()
     tempStr = captureDateTimeBlock[:4]
     sheet.testResult[rowcaptureDateTime + 1] = int(tempStr, 16)
     tempStr = captureDateTimeBlock[4:6]
@@ -440,7 +441,7 @@ def captureDateTime(sheet):
     captureDateTime = '%04x%02x%02x%02x%02x%02x%04x'%(int(year), int(month), int(date), int(hour), int(minute),
                                   int(second), int(millisecond))
 
-    captureDateTime = captureDateTime.encode('utf-8')
+    captureDateTime = bytes.fromhex(captureDateTime)
     return captureDateTime
 
 def channelScaling(varName, sheet):

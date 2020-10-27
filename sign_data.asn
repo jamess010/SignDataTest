@@ -5,6 +5,7 @@
 	 AUTOMATIC TAGS ::= 
    BEGIN
  
+
 SignDynamicBlock ::= SEQUENCE {
 	header GeneralHeader,
 	body Body 
@@ -16,13 +17,12 @@ GeneralHeader ::= SEQUENCE {
 	     -- " 10" (space-one-zero) for this version
 	lengthofRecord                INTEGER(0..4294967295),
 	numberofRepresentations       INTEGER(0..65535),
-	certificationFlag             INTEGER(0..255)
-}
+	certificationFlag             INTEGER(0..255)}
 
 Body ::= SEQUENCE {
 	representation RepresentationHeaderValues,
-	representationBody RepesentationBodyValues
-} 
+	-- RepresentationBodyValues}   changed by TJ 20201011
+	representationBody RepesentationBodyValues} -- changed end
 
 RepresentationHeaderValues ::= SEQUENCE {
 	reprsentationLength          INTEGER(0..4294967295),
@@ -40,7 +40,8 @@ RepresentationHeaderValues ::= SEQUENCE {
 	numberofAveragingSamples     INTEGER (1..255)
 }
 
-CaptureDateTimeValues ::= OCTET STRING (SIZE (18))
+CaptureDateTimeValues ::= OCTET STRING (SIZE (9))
+
 
 QualityBlockValues ::= SEQUENCE {
    numberofQualityblocks INTEGER (0..255), 
@@ -55,40 +56,34 @@ QualityBlockValues ::= SEQUENCE {
 
 ScalingValue ::= SEQUENCE {
 	exponent               INTEGER (-16..15),
-	fraction               INTEGER (0..2047)
-}
+	fraction               INTEGER (0..2047)}
 
 RepesentationBodyValues ::= SEQUENCE {
 	dynamicEventData DynamicEventData,
 	featureData FeatureData,
-	extendedData OCTET STRING OPTIONAL
-}
+	extendedData OCTET STRING OPTIONAL}
 
 DynamicEventData ::= SEQUENCE {
 	xCoordinate           INTEGER (-32768..32767),
 	yCoordinate           INTEGER (-32768..32767),
 	fValue                INTEGER (0..65535),
 	timeValue             INTEGER (0..65535),
-	typeofEvent           INTEGER (0..255)
-}
+	typeofEvent           INTEGER (0..255)}
 	
 FeatureData ::= SEQUENCE {
 	totalTime       INTEGER (0..65535),
 	meanValues      OverallMeanValues,
 	sdValues        StandardDeviation,
-	cCoefficient    INTEGER (1..65535) 
-}
+	cCoefficient    INTEGER (1..65535) }
 
 OverallMeanValues ::= SEQUENCE {
 	meanX           INTEGER (-32768..32767),
 	meanY           INTEGER (-32768..32767),
-	meanF           INTEGER (0..65535) 
-}
+	meanF           INTEGER (0..65535) }
 
 StandardDeviation ::= SEQUENCE {
 	sdX             INTEGER (0..65535),
 	sdY             INTEGER (0..65535),
-	sdF             INTEGER (0..65535) 
-}
+	sdF             INTEGER (0..65535) }
 END
 
