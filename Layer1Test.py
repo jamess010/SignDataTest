@@ -70,7 +70,11 @@ def assertMultiAndBetween(x, lo, hi, con, index, flag=True):
             print('(%r) Error! %r not between %r and %r, also not in %r' % (index+1, x, lo, hi, con))
             totalTestResult.append('Error')
         else:
-            print('(%r) Pass! %r is between %r and %r, also is in %r' % (index+1, x, lo, hi, con))
+            if x in con:
+                print('(%r) Pass! %r is in  %r' % (index+1, x, con))
+            else:
+                print('(%r) Pass! %r is between %r and %r' % (index+1, x, lo, hi))
+                
             totalTestResult.append('Pass')
     else:
         if not (x in con):
@@ -141,24 +145,23 @@ def checkMultiAndBetween(index, varName, sheet):
 
 
 def layer1Test(sheet, typeList):
-    df1 = sheet.varName[sheet.layer1Test == 'Y']
     print('******** Layer1 Testing Begin ********')
     print('---------------------------')
-    for var in df1:
-        index = getVarRow(var, sheet)
-
-        if  sheet.dataType[index] in typeList and sheet.dataType[index] == 'B' :
-            testDataValue = checkBetween(index, var, sheet)
-            print('---------------------------')
-        elif  sheet.dataType[index] in typeList and sheet.dataType[index] == 'M' :
-            testDataValue = checkNulti(index, var, sheet)
-            print('---------------------------')
-        elif  sheet.dataType[index] in typeList and sheet.dataType[index] == 'MB' :
-            testDataValue = checkMultiAndBetween(index, var, sheet)
-            print('---------------------------')
-        elif  sheet.dataType[index] in typeList and sheet.dataType[index] == 'SS' :
-            testDataValue = checkSpecialSingle(index, var, sheet)
-            print('---------------------------')
+    for index in range(len(sheet)):
+        if sheet.layer1Test[index] == 'Y':
+            var = sheet.varName[index]
+            if  sheet.dataType[index] in typeList and sheet.dataType[index] == 'B' :
+                testDataValue = checkBetween(index, var, sheet)
+                print('---------------------------')
+            elif  sheet.dataType[index] in typeList and sheet.dataType[index] == 'M' :
+                testDataValue = checkNulti(index, var, sheet)
+                print('---------------------------')
+            elif  sheet.dataType[index] in typeList and sheet.dataType[index] == 'MB' :
+                testDataValue = checkMultiAndBetween(index, var, sheet)
+                print('---------------------------')
+            elif  sheet.dataType[index] in typeList and sheet.dataType[index] == 'SS' :
+                testDataValue = checkSpecialSingle(index, var, sheet)
+                print('---------------------------')
 
 
 
