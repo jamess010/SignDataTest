@@ -42,9 +42,9 @@ optional arguments: </br>
  ##### 帮助命令：./Layer1Test.py -h
  usage: Layer1Test.py [-h] [-s XLS] [-t TYPE]
 
- optional arguments:
-  -h, --help            show this help message and exit
-  -s XLS, --xls XLS     test data sheet file pathname
+ optional arguments:</br>
+  -h, --help            show this help message and exit</br>
+  -s XLS, --xls XLS     test data sheet file pathname</br>
   -t TYPE, --type TYPE  testing according to data type , -t [B,M,...] or -t [all] for B,M,MB,SS
 
  
@@ -54,8 +54,8 @@ optional arguments: </br>
  ##### 帮助命令：./Layer2Test.py -h
  usage: Layer2Test.py [-h] [-s XLS]
 
- optional arguments:
-  -h, --help         show this help message and exit
+ optional arguments:</br>
+  -h, --help         show this help message and exit</br>
   -s XLS, --xls XLS  test data sheet file pathname
  
  
