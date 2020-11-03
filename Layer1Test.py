@@ -5,11 +5,11 @@ Created on Tue Nov  3 14:38:14 2020
 
 @author: tjian
 
-python Layer1Test.py -s test_sheet_layer2.xlsx -t all
-python Layer1Test.py -s test_sheet_layer2.xlsx -t SS
-python Layer1Test.py -s test_sheet_layer2.xlsx -t B
-python Layer1Test.py -s test_sheet_layer2.xlsx -t MB
-python Layer1Test.py -s test_sheet_layer2.xlsx -t M
+python Layer1Test.py -s test_sheet.xlsx -t all
+python Layer1Test.py -s test_sheet.xlsx -t SS
+python Layer1Test.py -s test_sheet.xlsx -t B
+python Layer1Test.py -s test_sheet.xlsx -t MB
+python Layer1Test.py -s test_sheet.xlsx -t M
 
 python Layer1Test.py -s test_sheet_layer2.xlsx -t SS,MB,M
 """
@@ -25,10 +25,6 @@ def getVarRow(varName, sheet):
         if varName == sheet.varName[i]:
             return i
 
-def getVarRow(varName, sheet):
-    for i in range(len(sheet)):
-        if varName == sheet.varName[i]:
-            return i
 
 def assertBetween(x, lo, hi, index):
     if not (lo <= x <= hi):
@@ -149,10 +145,7 @@ def layer1Test(sheet, typeList):
     print('******** Layer1 Testing Begin ********')
     print('---------------------------')
     for var in df1:
-        df2 = sheet.varName.dropna()
         index = getVarRow(var, sheet)
-        dataTest = sheet.testData[index]
-        dataRange = sheet.dataRange[index]
 
         if  sheet.dataType[index] in typeList and sheet.dataType[index] == 'B' :
             testDataValue = checkBetween(index, var, sheet)
