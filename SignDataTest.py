@@ -216,7 +216,7 @@ def assertMultiAndBetween(x, lo, hi, con, index, flag=True):
 def checkBetween(index, varName, sheet):
     if sheet['varName'][index] == varName:
         testNum = sheet['testData'][index]
-        if sheet['needCheck'][index] == 'Y':
+        if sheet['layer1Test'][index] == 'Y':
             temp = sheet['dataRange'][index] 
             numStr = temp.split('~',1)
             assertBetween(int(testNum), int(numStr[0], 16), int(numStr[1], 16), index+1)
@@ -229,7 +229,7 @@ def checkBetween(index, varName, sheet):
 def checkSingle(index, varName, sheet):
     if sheet['varName'][index] == varName:
         testNum = sheet['testData'][index]
-        if sheet['needCheck'][index] == 'Y':
+        if sheet['layer1Test'][index] == 'Y':
                 numStr = sheet['dataRange'][index]    
                 if numStr[1] == 'x':
                     assert testNum ==  int(numStr,16), 'index=%d：test data is %s , but must be %s' % (index+1,  testNum, numStr)
@@ -242,7 +242,7 @@ def checkSingle(index, varName, sheet):
 def checkSpecialSingle(index, varName, sheet):
     if sheet['varName'][index] == varName:
         testNum = sheet['testData'][index]
-        if sheet['needCheck'][index] == 'Y':
+        if sheet['layer1Test'][index] == 'Y':
                 numStr = sheet['dataRange'][index]    
                                 
                 assert testNum ==  numStr, 'index=%d：test data is %s , but must be %s' % (index+1,  testNum, numStr)
@@ -255,7 +255,7 @@ def checkSpecialSingle(index, varName, sheet):
 def checkMultiAndBetween(index, varName, sheet):
     if sheet['varName'][index] == varName:
         testNum = sheet['testData'][index]
-        if sheet['needCheck'][index] == 'Y':
+        if sheet['layer1Test'][index] == 'Y':
             temp = sheet['dataRange'][index] 
             import re
             if re.search(r"~",temp) == None:
@@ -283,7 +283,7 @@ def checkMultiAndBetween(index, varName, sheet):
 def checkNulti(index, varName, sheet):
     if sheet['varName'][index] == varName:
         testNum = sheet['testData'][index]
-        if sheet['needCheck'][index] == 'Y':
+        if sheet['layer1Test'][index] == 'Y':
             temp = sheet['dataRange'][index] 
    #         print(temp)
             import re
@@ -512,7 +512,7 @@ def main(argv):
     else:
         xls_file = args.xls
         data_sheet = pd.read_excel(io=xls_file)
-        data_sheet.columns = ['index', 'testRef', 'abstract', 'varName', 'needCheck', 'dataType', 'dataRange', 'testData', 'testResult', 'remarks']
+        data_sheet.columns = ['index', 'testRef', 'abstract', 'varName', 'layer1Test','layer2Test', 'dataType', 'dataRange', 'testData', 'testResult', 'remarks']
 
     if args.encode:
         if args.encode in ('ber','per','xer'):
@@ -599,7 +599,7 @@ def main(argv):
             captureDateTimeToTestResult('captureDateTime', data_sheet, testResultBlock)
             
             data_sheet_to_save = data_sheet.copy()
-            data_sheet_to_save.columns = ['序号', '测试参考', '说明', '变量名参考', '数据检查', '数据类型','数据范围', '测试数据', '测试结果', '备注']
+            data_sheet_to_save.columns = ['序号', '测试参考', '说明', '变量名参考', '级别一测试','级别二测试', '数据类型','数据范围', '测试数据', '测试结果', '备注']
             data_sheet_to_save.to_excel(args.output)
        
     else:
@@ -608,5 +608,3 @@ def main(argv):
 if __name__ == '__main__':
     main(sys.argv[1:])
 
-# Python--递归函数实现：多维嵌套字典数据无限遍历
-# https://www.cnblogs.com/wangyanyan/p/11270063.html
