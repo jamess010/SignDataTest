@@ -35,3 +35,27 @@ optional arguments: </br>
   -o OUTPUT, --output OUTPUT     save encode/decode data to a file</br>
   -a ASN, --asn ASN     asn file pathname</br>
   -s XLS, --xls XLS     test data sheet file pathname</br>
+ 
+ ## Layer1Test
+ #### 针对test_sheet.xlsx中testdata进行layer 1 测试
+ ./Layer1Test.py -s test_sheet_layer2.xlsx -t all
+ ##### 帮助命令：./Layer1Test.py -h
+ usage: Layer1Test.py [-h] [-s XLS] [-t TYPE]
+
+ optional arguments:
+  -h, --help            show this help message and exit
+  -s XLS, --xls XLS     test data sheet file pathname
+  -t TYPE, --type TYPE  testing according to data type , -t [B,M,...] or -t [all] for B,M,MB,SS
+
+ 
+ ## Layer2Test
+ #### 针对test_sheet.xlsx中testdata进行layer 2 测试
+ ./Layer2Test.py -s test_sheet.xlsx
+ ##### 帮助命令：./Layer2Test.py -h
+ usage: Layer2Test.py [-h] [-s XLS]
+
+ optional arguments:
+  -h, --help         show this help message and exit
+  -s XLS, --xls XLS  test data sheet file pathname
+ 
+ 
