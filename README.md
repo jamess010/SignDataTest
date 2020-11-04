@@ -1,7 +1,8 @@
+
+
+#### 本项目是对"ISO/IEC 19794-11"数据格式验证的python实现，目前可以使用BER(Basic Encoding Rules)、PER(Packed Encoding Rules)、XER(Xml Encoding Rules)编码规则对数据进行编码和解码，对于PER有对齐per，非对齐uper两种编解码方式选择。文件sign_data.asn依据"ISO/IEC 19794-11"编写，并修正了一些错误内容。本项目测试套件包括：SignDataTest.py，Layer1Test.py，Layer2Test.py和DataGen.py。
+
 ## SignDataTest
-
-#### 本项目是对"ISO/IEC 19794-11"数据格式验证的python实现，目前可以使用BER(Basic Encoding Rules)、PER(Packed Encoding Rules)、XER(Xml Encoding Rules)编码规则对数据进行编码和解码，对于PER有对齐per，非对齐uper两种编解码方式选择。文件sign_data.asn依据"ISO/IEC 19794-11"编写，并修正了一些错误内容。
-
 ##### BER验证
   * 编码命令：./SignDataTest.py -a pathname/sign_data.asn -s pathname/test_sheet.xlsx -e ber -o pathname/testBer.txt </br>
 用于读取test_sheet.xlsx的内容，使用BER进行编码，并将编码结果输出到testBer.txt中（因为是二进制文件看不到内容）</br>
