@@ -180,6 +180,11 @@ def qualityRecord(sheet):
     index = getVarRow('qualityRecord', sheet)
     index += 1
     numberofQualityblocks = sheet.testData[index]
+    df2 = sheet.varName.dropna()
+    df1 = df2.str.contains('qualityblock')
+    df3 = df1.value_counts()
+    qualityNum1 = df3[True]
+    assert qualityNum1 == numberofQualityblocks, '(%r) numberofQualityblocks %r is not same as qualityblocks %r'%(index+1, numberofQualityblocks,qualityNum1 )
     for i in range(numberofQualityblocks):
         qualityblockDict = {}
 
@@ -281,7 +286,8 @@ def checkMultiAndBetween(index, varName, sheet):
         assert False, 'index=%d：%s not correct！'%(index+1, sheet['varName'][index])
 
 def checkNulti(index, varName, sheet):
-    if sheet['varName'][index] == varName:
+    print(index, varName)
+    if sheet.varName[index] == varName:
         testNum = sheet['testData'][index]
         if sheet['layer1Test'][index] == 'Y':
             temp = sheet['dataRange'][index] 
