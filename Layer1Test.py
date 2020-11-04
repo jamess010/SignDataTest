@@ -101,7 +101,7 @@ def checkNulti(index, varName, sheet):
                 for tempStr in numStr1:
                     numStr1[i] = int(numStr1[i], 16)
                     i += 1
-                assertMultiAndBetween(int(testNum), 0, 0, numStr1, index+1, False)     
+                assertMultiAndBetween(int(testNum), 0, 0, numStr1, index, False)     
             else:
                 numStr1 = temp.split(';',10)               
                 numStr2 = numStr1[0].split('~',1)                
@@ -128,7 +128,7 @@ def checkMultiAndBetween(index, varName, sheet):
                 for tempStr in numStr1:
                     numStr1[i] = int(numStr1[i], 16)
                     i += 1
-                assertMultiAndBetween(int(testNum), 0, 0, numStr1, index+1, False)     
+                assertMultiAndBetween(int(testNum), 0, 0, numStr1, index, False)     
             else:
                 numStr1 = temp.split(';',10)               
                 numStr2 = numStr1[0].split('~',1)                
