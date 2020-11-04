@@ -60,7 +60,7 @@ optional arguments: </br>
  
  
 ## DataGen
- #### 针对test_sheet.xlsx产生testdata测试数据
+ #### 针对test_sheet.xlsx产生testdata测试数据，通过-f参数选择，formal随机产生合规数据，any随机产生任意数据
  ./DataGen.py -s pathname/test_sheet.xlsx -o pathname/test_temp_data.xls -f formal
  ##### 帮助命令：./DataGen.py -h
  usage: DataGen.py [-h] [-s XLS] [-o OUTPUT] [-f FLAG]
