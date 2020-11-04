@@ -59,3 +59,16 @@ optional arguments: </br>
   -s XLS, --xls XLS  test data sheet file pathname
  
  
+## DataGen
+ #### 针对test_sheet.xlsx产生testdata测试数据
+ ./DataGen.py -s pathname/test_sheet.xlsx -o pathname/test_temp_data.xls -f formal
+ ##### 帮助命令：./DataGen.py -h
+ usage: DataGen.py [-h] [-s XLS] [-o OUTPUT] [-f FLAG]
+
+ optional arguments:</br>
+  -h, --help            show this help message and exit</br>
+  -s XLS, --xls XLS     test data sheet file pathname</br>
+  -o OUTPUT, --output OUTPUT
+                        save encode/decode data to a file</br>
+  -f FLAG, --flag FLAG  generator data rule, [formal] according to dataRange or [any] not caring
+                        dataRange
